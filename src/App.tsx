@@ -41,8 +41,16 @@ const useGoodsSorter = (
 
     if (field === SortType.SortAlphabetically) {
       sortedGoods.sort((a, b) => a.localeCompare(b));
-    } else if (field === SortType.SortByLength) {
-      sortedGoods.sort((a, b) => a.length - b.length);
+    }
+
+    if (field === SortType.SortByLength) {
+      sortedGoods.sort((a, b) => {
+        const lengthDifference = a.length - b.length;
+        if (lengthDifference !== 0) {
+          return lengthDifference;
+        }
+        return a.localeCompare(b);
+      });
     }
 
     if (isReversed) {
