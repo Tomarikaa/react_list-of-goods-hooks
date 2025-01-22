@@ -37,7 +37,7 @@ const useGoodsSorter = (
   const [isReversed, setIsReversed] = useState<boolean>(false);
 
   const handleSort = (field: SortType): void => {
-    const sortedGoods = [...goodsFromServer];
+    const sortedGoods = [...goods];
 
     if (field === SortType.SortAlphabetically) {
       sortedGoods.sort((a, b) => a.localeCompare(b));
